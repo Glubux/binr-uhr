@@ -1,15 +1,15 @@
 function update () {
-    let Index = 0
     basic.clearScreen()
     wert = zeit
-    for (let Index = 0; Index <= 4; Index++) {
+    for (let Index = 0; Index <= 5; Index++) {
         if (wert % 2 == 1) {
-            led.plot(4 - Index, wert2)
+            if (Index == 5) {
+                led.plot(0, 3)
+            } else {
+                led.plot(4 - Index, wert2)
+            }
         }
         wert = Math.floor(wert / 2)
-    }
-    if (Index == 4) {
-        wert2 += -1
     }
 }
 let wert = 0
@@ -19,7 +19,7 @@ zeit = 0
 wert2 = 4
 update()
 basic.forever(function () {
-    basic.pause(500)
+    basic.pause(200)
     update()
     zeit += 1
 })
